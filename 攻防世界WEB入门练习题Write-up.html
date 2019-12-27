@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://www.leeyuxun.club').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.6.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: true,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},
+    path: './public/search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="菜鸟入坑WEB，总结了攻防世界WEB新手入门题目的解题思路，供初学者参考。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="攻防世界WEB入门练习题Write up">
+<meta property="og:url" content="https://www.leeyuxun.club/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up.html">
+<meta property="og:site_name" content="Leeyuxun&#39;s blog">
+<meta property="og:description" content="菜鸟入坑WEB，总结了攻防世界WEB新手入门题目的解题思路，供初学者参考。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564381171925.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564388248797.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564388398442.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564409074044.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564409225599.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564409361854.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564632397780.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564632691681.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564665090877.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564665238648.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564666215195.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564666694309.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564667544538.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564670056246.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564670223392.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564671594599.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564671901275.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564672033296.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564672188609.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564710201148.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564710259022.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564710354117.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564711345518.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564711560625.png">
+<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564713453391.png">
+<meta property="article:published_time" content="2019-08-04T10:19:18.000Z">
+<meta property="article:modified_time" content="2019-08-13T03:39:19.155Z">
+<meta property="article:author" content="李钰璕">
+<meta property="article:tag" content="WEB">
+<meta property="article:tag" content="CTF">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.leeyuxun.club/images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564381171925.png">
+
+<link rel="canonical" href="https://www.leeyuxun.club/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>攻防世界WEB入门练习题Write up | Leeyuxun's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Leeyuxun's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">BUPT | SCSS</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-links">
+
+    <a href="/links/" rel="section"><i class="fa fa-fw fa-link"></i>友链</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://www.leeyuxun.club/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="李钰璕">
+      <meta itemprop="description" content="记录网络安全学习从0到1">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leeyuxun's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          攻防世界WEB入门练习题Write up
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-04 18:19:18" itemprop="dateCreated datePublished" datetime="2019-08-04T18:19:18+08:00">2019-08-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-08-13 11:39:19" itemprop="dateModified" datetime="2019-08-13T11:39:19+08:00">2019-08-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/write-up/" itemprop="url" rel="index">
+                    <span itemprop="name">write up</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>菜鸟入坑WEB，总结了攻防世界WEB新手入门题目的解题思路，供初学者参考。<a id="more"></a></p>
+<h2 id="view-source"><a href="#view-source" class="headerlink" title="view_source"></a>view_source</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>右键无法使用，即右键无法查看网页源码，故尝试使用浏览器开发者工具</p>
+<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><p>Firefox</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>使用Firefox打开网页，按下F12，跳转到开发者模式，使用查看器查看网页源码，得到flag为<code>cyberpeace{abe8c9af5df02f72f83dde7d362c7df6}</code></p>
+<p><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564381171925.png" alt="1564381171925"></p>
+<h2 id="get-post"><a href="#get-post" class="headerlink" title="get_post"></a>get_post</h2><h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><p>http的数据请求post和get原理</p>
+<h3 id="工具-1"><a href="#工具-1" class="headerlink" title="工具"></a>工具</h3><p>Firefox、HackBar</p>
+<h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li><p>在Firefox浏览器中打开网页，提示要用GET方式提交一个值为1的变量a</p>
+</li>
+<li><p>使用HackBar通过get方式提交变量a=1,或者直接在URL输入框中输入<code>http://111.198.29.45:40308?a=1</code><br><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564388248797.png" alt="1564388248797"></p>
+</li>
+<li><p>根据提示继续以GET的方式提交a=1并以POST的方式提交值为2的变量b（勾选Post data即可）,返回flag为<code>cyberpeace{e0619fdbb17fe505fcded7b3869b9495}</code><br><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564388398442.png" alt="1564388398442"></p>
+</li>
+</ol>
+<h2 id="robots"><a href="#robots" class="headerlink" title="robots"></a>robots</h2><h3 id="原理-2"><a href="#原理-2" class="headerlink" title="原理"></a>原理</h3><p>robots.txt文件是一个协议，是搜索引擎中访问网站的时候要查看的第一个文件。robots.txt文件告诉蜘蛛程序在服务器上什么文件是可以被查看的。当一个搜索蜘蛛访问一个站点时，它会首先检查该站点根目录下是否存在robots.txt，如果存在，搜索机器人就会按照该文件中的内容来确定访问的范围；如果该文件不存在，所有的搜索蜘蛛将能够访问网站上所有没有被口令保护的页面。</p>
+<h3 id="工具-2"><a href="#工具-2" class="headerlink" title="工具"></a>工具</h3><p>目录爆破工具<a href="https://github.com/evilsocket/dirsearch" target="_blank" rel="noopener">dirserach</a></p>
+<h3 id="步骤-2"><a href="#步骤-2" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li>查看源码，没有提示，根据提示robots协议，想到flag可能会存储在<code>robots.txt</code>上</li>
+<li>通过目录爆破工具<a href="https://github.com/evilsocket/dirsearch" target="_blank" rel="noopener">dirserach</a>扫描网站目录：<code>python3 dirsearch.py -u &quot;http://111.198.29.45:55654/&quot; -e *</code>，扫描到robots.txt文件<br><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564409074044.png" alt="1564409074044"></li>
+<li>访问<code>http://111.198.29.45:55654/robots.txt</code>，发现<code>Disallow: f1ag_1s_h3re.php</code><br><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564409225599.png" alt="1564409225599"></li>
+<li>继续在URL中输入<code>http://111.198.29.45:55654/f1ag_1s_h3re.php</code>，尝试访问<code>f1ag_1s_h3re.php</code>，结果得到flag为<code>cyberpeace{841741b0c0780a80f91f6cd1148d0373}</code><br><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564409361854.png" alt="1564409361854"></li>
+</ol>
+<h2 id="backup"><a href="#backup" class="headerlink" title="backup"></a>backup</h2><h3 id="原理-3"><a href="#原理-3" class="headerlink" title="原理"></a>原理</h3><p>常见的备份文件后缀名有: <code>.git</code> <code>.svn</code> <code>.swp</code> <code>.svn</code> <code>.~</code> <code>.bak</code> <code>.bash_history</code></p>
+<h3 id="工具-3"><a href="#工具-3" class="headerlink" title="工具"></a>工具</h3><p>目录爆破工具<a href="https://github.com/evilsocket/dirsearch" target="_blank" rel="noopener">dirserach</a>，<a href="https://notepad-plus-plus.org/" target="_blank" rel="noopener">notepad++</a></p>
+<h3 id="步骤-3"><a href="#步骤-3" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li>查看源码，没有提示，根据提示忘记删除备份文件提示，想到flag可能会存储在备份文件上。</li>
+<li>通过目录爆破工具<a href="https://github.com/evilsocket/dirsearch" target="_blank" rel="noopener">dirserach</a>扫描网站目录：<code>python3 dirsearch.py -u &quot;http://111.198.29.45:37766/&quot; -e *</code>，扫描到index.php.bak备份文件<br><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564632397780.png" alt="1564632397780"></li>
+<li>继续在URL中输入<code>http://111.198.29.45:37766/index.php.bak</code>，讲备份文件保存到本地后使用<a href="https://notepad-plus-plus.org/" target="_blank" rel="noopener">notepad++</a>打开，发现flag为<code>cyberpeace{899ad51ca546f7e97b7f3f8f02d4e180}</code><br><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564632691681.png" alt="1564632691681"></li>
+</ol>
+<h2 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h2><h3 id="原理-4"><a href="#原理-4" class="headerlink" title="原理"></a>原理</h3><p>Cookie是当主机访问Web服务器时，由 Web 服务器创建的，将信息存储在用户计算机上的文件。一般网络用户习惯用其复数形式 Cookies，指某些网站为了辨别用户身份、进行 Session 跟踪而存储在用户本地终端上的数据，而这些数据通常会经过加密处理。</p>
+<h3 id="工具-4"><a href="#工具-4" class="headerlink" title="工具"></a>工具</h3><p>Firefox</p>
+<h3 id="步骤-4"><a href="#步骤-4" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li>使用Firefox打开网页，按下F12，跳转到开发者模式，刷新后，在存储一栏，可看到名为<code>look-here</code>的cookie的值为<code>cookie.php</code>。<br><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564665090877.png" alt="1564665090877"></li>
+<li>访问<code>http://111.198.29.45:42848/cookie.php</code>，提示查看http响应包，在网络一栏，看到访问cookie.php的数据包，点击查看数据包，在消息头内发现flag为<code>cyberpeace{06ebc2f1032b90f947762c560d358194}</code><br><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564665238648.png" alt="1564665238648"></li>
+</ol>
+<h2 id="disabled-button"><a href="#disabled-button" class="headerlink" title="disabled button"></a>disabled button</h2><h3 id="原理-5"><a href="#原理-5" class="headerlink" title="原理"></a>原理</h3><p>前端HTML语言语法</p>
+<h3 id="工具-5"><a href="#工具-5" class="headerlink" title="工具"></a>工具</h3><p>Firefox，HackBar</p>
+<h3 id="步骤-5"><a href="#步骤-5" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li><p>使用Firefox打开网页，按下F12，跳转到开发者模式，在查看器窗口审查元素，发现按钮请求使用POST方式，<code>name=&quot;auth&quot;</code>，<code>value=&quot;flag&quot;</code>，<code>disabled=“”</code>。<br><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564666215195.png" alt="1564666215195"></p>
+</li>
+<li><p>直接删除<code>disabled=“”</code>，或者将<code>disabled</code>改为<code>enabled</code>，使按钮变为可点击，点击按钮即获得flag；或者使用HackBar发送<code>auth=flag</code>的POST请求，也可获得flag为<code>cyberpeace{7fe886060fa0b82db931af33971587bd}</code></p>
+<p><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564666694309.png" alt="1564666694309"></p>
+</li>
+</ol>
+<h2 id="simple-js"><a href="#simple-js" class="headerlink" title="simple js"></a>simple js</h2><h3 id="原理-6"><a href="#原理-6" class="headerlink" title="原理"></a>原理</h3><p>javascript的代码审计</p>
+<h3 id="工具-6"><a href="#工具-6" class="headerlink" title="工具"></a>工具</h3><p>Firefox</p>
+<h3 id="步骤-6"><a href="#步骤-6" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li>使用Firefox打开网页，按下F12，跳转到开发者模式，点击查看器查看源代码，可以发现js代码</li>
+</ol>
+<p><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564667544538.png" alt="1564667544538"></p>
+<ol start="2">
+<li><p>进行代码审计，发现不论输入什么都会跳到假密码，真密码位于 <code>fromCharCode</code>中 。</p>
+</li>
+<li><p>使用python处理字符串，得到数组[55,56,54,79,115,69,114,116,107,49,50]，exp如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s=<span class="string">"\x35\x35\x2c\x35\x36\x2c\x35\x34\x2c\x37\x39\x2c\x31\x31\x35\x2c\x36\x39\x2c\x31\x31\x34\x2c\x31\x31\x36\x2c\x31\x30\x37\x2c\x34\x39\x2c\x35\x30"</span></span><br><span class="line"><span class="keyword">print</span> (s)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将数字转换成ASCII码得到字符串<code>786OsErtk12</code>，exp如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">55</span>,<span class="number">56</span>,<span class="number">54</span>,<span class="number">79</span>,<span class="number">115</span>,<span class="number">69</span>,<span class="number">114</span>,<span class="number">116</span>,<span class="number">107</span>,<span class="number">49</span>,<span class="number">50</span>]</span><br><span class="line">c = <span class="string">""</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">b = chr(i)</span><br><span class="line">c = c + b</span><br><span class="line">print(c)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>根据flag格式提示，得到flag为<code>Cyberpeace{786OsErtk12}</code> 。</p>
+</li>
+</ol>
+<h2 id="xff-referer"><a href="#xff-referer" class="headerlink" title="xff referer"></a>xff referer</h2><h3 id="原理-7"><a href="#原理-7" class="headerlink" title="原理"></a>原理</h3><p>X-Forwarded-For简称XFF头，它代表客户端，也就是HTTP的请求端真实的IP，只有在通过了HTTP 代理或者负载均衡服务器时才会添加该项。HTTP Referer是header的一部分，当浏览器向web服务器发送请求的时候，一般会带上Referer，告诉服务器我是从哪个页面链接过来的</p>
+<h3 id="工具-7"><a href="#工具-7" class="headerlink" title="工具"></a>工具</h3><p>Firefox，burpsuite</p>
+<h3 id="步骤-7"><a href="#步骤-7" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li><p>使用Firefox打开网页，提示IP地址必须为<code>123.123.123.123</code>。</p>
+</li>
+<li><p>使用burpsuite对Firefox进行代理拦截，在请求头添加<code>X-Forwarded-For: 123.123.123.123</code>，然后放行。收到包显示必须来自<code>https://www.google.com</code>：<br><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564670056246.png" alt="1564670056246"></p>
+</li>
+<li><p>继续在请求头添加<code>Referer: https://www.google.com</code>，放行后获得flag为<code>cyberpeace{0dd83e102ef7baaee4b1332a71de72e5}</code></p>
+<p><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564670223392.png" alt="1564670223392"></p>
+</li>
+</ol>
+<h2 id="weak-auth"><a href="#weak-auth" class="headerlink" title="weak auth"></a>weak auth</h2><h3 id="原理-8"><a href="#原理-8" class="headerlink" title="原理"></a>原理</h3><p>弱口令爆破</p>
+<h3 id="工具-8"><a href="#工具-8" class="headerlink" title="工具"></a>工具</h3><p>burpsuite、攻击字典</p>
+<h3 id="步骤-8"><a href="#步骤-8" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li>使用Firefox打开网页，尝试输入任意用户名，提示要使用admin账户登录。</li>
+<li>用burpsuite截下登录的数据包。</li>
+<li><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564671594599.png" alt="1564671594599"></li>
+<li>把数据包发送到intruder爆破，设置爆破点为password。<br><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564671901275.png" alt="1564671901275"></li>
+<li>导入攻击字典。<br><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564672033296.png" alt="1564672033296"></li>
+<li>开始攻击，查看响应包列表，发现密码为123456时，响应包的长度和别的不一样。查看响应包，找到flag为<code>cyberpeace{22ee862a8aabe56a849198cd2bd9d2a8}</code>。<br><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564672188609.png" alt="1564672188609"></li>
+</ol>
+<h2 id="webshell"><a href="#webshell" class="headerlink" title="webshell"></a>webshell</h2><h3 id="原理-9"><a href="#原理-9" class="headerlink" title="原理"></a>原理</h3><p>php一句话木马</p>
+<h3 id="工具-9"><a href="#工具-9" class="headerlink" title="工具"></a>工具</h3><p>菜刀</p>
+<h3 id="步骤-9"><a href="#步骤-9" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li>打开网页，发现提示<code>&lt;?php @eval($_POST[&#39;shell&#39;]);?&gt;</code> ，为PHP一句话木马。</li>
+<li>使用菜刀连接：<br><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564710201148.png" alt="1564710201148"></li>
+<li>网站目录下发现了f<code>lag.txt</code>文件：<br><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564710259022.png" alt="1564710259022"></li>
+<li>查看文件可获得flag为<code>cyberpeace{8733882b6647dada96f18da7f7f56754}</code><br><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564710354117.png" alt="1564710354117"></li>
+</ol>
+<h2 id="command-execution"><a href="#command-execution" class="headerlink" title="command execution"></a>command execution</h2><h3 id="原理-10"><a href="#原理-10" class="headerlink" title="原理"></a>原理</h3><p>windows和linux下:<br><code>command1 &amp;&amp; command2</code> 先执行<code>command1</code>后执行<code>command2</code><br><code>command1 | command2</code> 只执行<code>command2</code><br><code>command1 &amp; command2</code> 先执行<code>command2</code>后执行<code>command1</code></p>
+<h3 id="工具-10"><a href="#工具-10" class="headerlink" title="工具"></a>工具</h3><p>Firefox</p>
+<h3 id="步骤-10"><a href="#步骤-10" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li>使用Firefox打开网页，在输入框输入<code>ping 111.198.29.45 | find / -name &quot;flag.txt&quot;</code>，寻找flag位置为<code>/home/flag.txt</code><br><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564711345518.png" alt="1564711345518"></li>
+<li>继续输入命令<code>ping 111.198.29.45 | cat /home/flag.txt</code>打开flag.txt文件,获得flag为<code>cyberpeace{807ae4792ee2474774421999b765b97e}</code><br><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564711560625.png" alt="1564711560625"></li>
+</ol>
+<h2 id="simple-php"><a href="#simple-php" class="headerlink" title="simple php"></a>simple php</h2><h3 id="原理-11"><a href="#原理-11" class="headerlink" title="原理"></a>原理</h3><p>PHP比较符号<code>===</code>和<code>==</code></p>
+<p><code>===</code>会先比较字符串的类型再比较字符串的值</p>
+<p><code>==</code>会先将字符串换成相同类型，再作比较，属于弱类型比较</p>
+<h3 id="工具-11"><a href="#工具-11" class="headerlink" title="工具"></a>工具</h3><p>Firefox</p>
+<h3 id="步骤-11"><a href="#步骤-11" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li><p>使用Firefox 打开网页，发现PHP代码为</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	show_source(<span class="keyword">__FILE__</span>);</span><br><span class="line">	<span class="keyword">include</span>(<span class="string">"config.php"</span>);</span><br><span class="line">	$a=@$_GET[<span class="string">'a'</span>];</span><br><span class="line">	$b=@$_GET[<span class="string">'b'</span>];</span><br><span class="line">	<span class="keyword">if</span>($a==<span class="number">0</span> <span class="keyword">and</span> $a)&#123;</span><br><span class="line">	    <span class="keyword">echo</span> $flag1;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(is_numeric($b))&#123;</span><br><span class="line">	    <span class="keyword">exit</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>($b&gt;<span class="number">1234</span>)&#123;</span><br><span class="line">	    <span class="keyword">echo</span> $flag2;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进行代码审计：通过<code>GET</code>方式传值<code>a</code>和<code>b</code>，需要满足<code>$a==0 &amp;&amp; $a</code>且b不为数字或数字字符串且<code>$b&gt;1234</code>。</p>
+</li>
+<li><p>在URL输入栏中输入<code>http://111.198.29.45:31491/index.php?a=a&amp;&amp;b=1235b</code>，满足审计条件，获得flag为<br><code>Cyberpeace{647E37C7627CC3E4019EC69324F66C7C}</code><br><img src="/../images/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up/1564713453391.png" alt="1564713453391"></p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+        <div class="post-copyright">
+     <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+     <p><span>本文标题: </span><a href="/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up.html">攻防世界WEB入门练习题Write up</a></p>
+     <p><span>文章作者: </span><a href="/" title="访问 李钰璕 的个人博客">李钰璕</a></p>
+     <p><span>发布时间: </span>2019年08月04日 - 18:19</p>
+     <p><span>最后更新: </span>2019年08月13日 - 11:39</p>
+     <p><span>原始链接: </span><a href="/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up.html" title="攻防世界WEB入门练习题Write up"><a href="https://www.leeyuxun.club/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8CWEB%E5%85%A5%E9%97%A8%E7%BB%83%E4%B9%A0%E9%A2%98Write-up.html" title="攻防世界WEB入门练习题Write up">https://www.leeyuxun.club/攻防世界WEB入门练习题Write-up.html</a></a></p>
+     <p><span>许可协议: </span>本博客所有文章除特别声明外，均采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)"> <i class="fa fa-creative-commons"></i>BY-NC-SA </a>许可协议，转载请注明出处！</p>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/WEB/" rel="tag"><i class="fa fa-tag"></i> WEB</a>
+              <a href="/tags/CTF/" rel="tag"><i class="fa fa-tag"></i> CTF</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/ARP%E6%AC%BA%E9%AA%97-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html" rel="next" title="ARP欺骗 实验报告">
+      ARP欺骗 实验报告 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#view-source"><span class="nav-number">1.</span> <span class="nav-text">view_source</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">1.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具"><span class="nav-number">1.2.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤"><span class="nav-number">1.3.</span> <span class="nav-text">步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get-post"><span class="nav-number">2.</span> <span class="nav-text">get_post</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理-1"><span class="nav-number">2.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具-1"><span class="nav-number">2.2.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤-1"><span class="nav-number">2.3.</span> <span class="nav-text">步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#robots"><span class="nav-number">3.</span> <span class="nav-text">robots</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理-2"><span class="nav-number">3.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具-2"><span class="nav-number">3.2.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤-2"><span class="nav-number">3.3.</span> <span class="nav-text">步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#backup"><span class="nav-number">4.</span> <span class="nav-text">backup</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理-3"><span class="nav-number">4.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具-3"><span class="nav-number">4.2.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤-3"><span class="nav-number">4.3.</span> <span class="nav-text">步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cookie"><span class="nav-number">5.</span> <span class="nav-text">cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理-4"><span class="nav-number">5.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具-4"><span class="nav-number">5.2.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤-4"><span class="nav-number">5.3.</span> <span class="nav-text">步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#disabled-button"><span class="nav-number">6.</span> <span class="nav-text">disabled button</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理-5"><span class="nav-number">6.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具-5"><span class="nav-number">6.2.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤-5"><span class="nav-number">6.3.</span> <span class="nav-text">步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#simple-js"><span class="nav-number">7.</span> <span class="nav-text">simple js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理-6"><span class="nav-number">7.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具-6"><span class="nav-number">7.2.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤-6"><span class="nav-number">7.3.</span> <span class="nav-text">步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xff-referer"><span class="nav-number">8.</span> <span class="nav-text">xff referer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理-7"><span class="nav-number">8.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具-7"><span class="nav-number">8.2.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤-7"><span class="nav-number">8.3.</span> <span class="nav-text">步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#weak-auth"><span class="nav-number">9.</span> <span class="nav-text">weak auth</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理-8"><span class="nav-number">9.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具-8"><span class="nav-number">9.2.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤-8"><span class="nav-number">9.3.</span> <span class="nav-text">步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webshell"><span class="nav-number">10.</span> <span class="nav-text">webshell</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理-9"><span class="nav-number">10.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具-9"><span class="nav-number">10.2.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤-9"><span class="nav-number">10.3.</span> <span class="nav-text">步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#command-execution"><span class="nav-number">11.</span> <span class="nav-text">command execution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理-10"><span class="nav-number">11.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具-10"><span class="nav-number">11.2.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤-10"><span class="nav-number">11.3.</span> <span class="nav-text">步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#simple-php"><span class="nav-number">12.</span> <span class="nav-text">simple php</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原理-11"><span class="nav-number">12.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具-11"><span class="nav-number">12.2.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤-11"><span class="nav-number">12.3.</span> <span class="nav-text">步骤</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="李钰璕"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">李钰璕</p>
+  <div class="site-description" itemprop="description">记录网络安全学习从0到1</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Leeyuxun" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Leeyuxun" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/medium-zoom@1/dist/medium-zoom.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+
+</body>
+</html>
