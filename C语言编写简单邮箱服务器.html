@@ -53,60 +53,60 @@
 <meta property="og:site_name" content="Leeyuxun&#39;s blog">
 <meta property="og:description" content="实验内容和实验环境描述实验任务使用Socket API编写一个SMTP邮件服务器程序。 实验内容 作为SMTP服务器，接收邮件客户端程序的TCP连接请求，接收SMTP命令和邮件数据，将邮件保存在文件中； 作为SMTP客户端，建立到实际邮件服务器的TCP连接，发送SMTP命令，将保存的邮件发送给实际邮件服务器； 提供邮件差错报告：将实际邮件服务器的差错报告转发给邮件客户端软件； 支持一封邮件多个接收">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570456967883.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457055794.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457068039.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457082800.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457090449.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457582715.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457615784.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457659516.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457668896.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457685949.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457697414.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457711773.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457723898.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457747310.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457754007.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457762168.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457771324.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457776111.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457787256.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457792426.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457798935.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458208569.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458220376.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458252177.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458292381.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458299259.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458368163.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458374129.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458393735.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458420577.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458428161.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458447126.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458522622.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458529130.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458536158.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458595554.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458601831.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458616613.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458665510.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458677278.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458682084.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458758374.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458782507.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458791157.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458900597.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458906161.png">
-<meta property="og:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458913048.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570456967883.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457055794.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457068039.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457082800.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457090449.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457582715.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457615784.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457659516.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457668896.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457685949.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457697414.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457711773.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457723898.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457747310.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457754007.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457762168.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457771324.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457776111.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457787256.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457792426.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457798935.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458208569.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458220376.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458252177.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458292381.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458299259.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458368163.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458374129.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458393735.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458420577.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458428161.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458447126.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458522622.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458529130.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458536158.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458595554.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458601831.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458616613.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458665510.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458677278.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458682084.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458758374.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458782507.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458791157.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458900597.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458906161.png">
+<meta property="og:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458913048.png">
 <meta property="article:published_time" content="2019-10-07T14:54:06.000Z">
-<meta property="article:modified_time" content="2019-10-07T15:07:30.841Z">
+<meta property="article:modified_time" content="2020-01-02T13:20:16.980Z">
 <meta property="article:author" content="李钰璕">
 <meta property="article:tag" content="SMPT">
 <meta property="article:tag" content="邮箱服务器">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.leeyuxun.icu/images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570456967883.png">
+<meta name="twitter:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570456967883.png">
 
 <link rel="canonical" href="https://www.leeyuxun.icu/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8.html">
 
@@ -278,10 +278,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-10-07 22:54:06 / 修改时间：23:07:30" itemprop="dateCreated datePublished" datetime="2019-10-07T22:54:06+08:00">2019-10-07</time>
+              <time title="创建时间：2019-10-07 22:54:06" itemprop="dateCreated datePublished" datetime="2019-10-07T22:54:06+08:00">2019-10-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-01-02 21:20:16" itemprop="dateModified" datetime="2020-01-02T21:20:16+08:00">2020-01-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -374,12 +380,12 @@
 <p>功能：提供差错报告，将实际邮件服务器的差错报告转发给邮件客户端软件                 </p>
 </li>
 </ol>
-<h3 id="子程序之间的程序关系调用图"><a href="#子程序之间的程序关系调用图" class="headerlink" title="子程序之间的程序关系调用图"></a>子程序之间的程序关系调用图</h3><p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570456967883.png" alt="1570456967883"></p>
+<h3 id="子程序之间的程序关系调用图"><a href="#子程序之间的程序关系调用图" class="headerlink" title="子程序之间的程序关系调用图"></a>子程序之间的程序关系调用图</h3><p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570456967883.png" alt="1570456967883"></p>
 <h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p>画出流程图，描述算法的主要流程。</p>
-<h3 id="整体算法流程"><a href="#整体算法流程" class="headerlink" title="整体算法流程"></a>整体算法流程</h3><p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457055794.png" alt="1570457055794"></p>
-<h3 id="主函数NS盒图"><a href="#主函数NS盒图" class="headerlink" title="主函数NS盒图"></a>主函数NS盒图</h3><p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457068039.png" alt="1570457068039"></p>
-<h3 id="Server函数NS盒图"><a href="#Server函数NS盒图" class="headerlink" title="Server函数NS盒图"></a>Server函数NS盒图</h3><p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457082800.png" alt="1570457082800"></p>
-<h3 id="Client函数NS盒图"><a href="#Client函数NS盒图" class="headerlink" title="Client函数NS盒图"></a>Client函数NS盒图</h3><p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457090449.png" alt="1570457090449"></p>
+<h3 id="整体算法流程"><a href="#整体算法流程" class="headerlink" title="整体算法流程"></a>整体算法流程</h3><p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457055794.png" alt="1570457055794"></p>
+<h3 id="主函数NS盒图"><a href="#主函数NS盒图" class="headerlink" title="主函数NS盒图"></a>主函数NS盒图</h3><p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457068039.png" alt="1570457068039"></p>
+<h3 id="Server函数NS盒图"><a href="#Server函数NS盒图" class="headerlink" title="Server函数NS盒图"></a>Server函数NS盒图</h3><p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457082800.png" alt="1570457082800"></p>
+<h3 id="Client函数NS盒图"><a href="#Client函数NS盒图" class="headerlink" title="Client函数NS盒图"></a>Client函数NS盒图</h3><p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457090449.png" alt="1570457090449"></p>
 <p>(备注：由于函数中使用了大量if语句，但是NS盒图很难画大量的if语句，故if语句用文字代替)</p>
 <h2 id="主要功能模块的实现要点"><a href="#主要功能模块的实现要点" class="headerlink" title="主要功能模块的实现要点"></a>主要功能模块的实现要点</h2><ol>
 <li><p><code>main()</code>——主函数</p>
@@ -402,87 +408,87 @@
 <h1 id="实验结果演示及分析"><a href="#实验结果演示及分析" class="headerlink" title="实验结果演示及分析"></a>实验结果演示及分析</h1><h2 id="实现功能测试截图"><a href="#实现功能测试截图" class="headerlink" title="实现功能测试截图"></a>实现功能测试截图</h2><p>对于所实现的功能，逐个进行测试，并将输出截图。</p>
 <ol>
 <li><p>因未实现ssl所以不勾画ssl端口</p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457582715.png" alt="1570457582715"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457615784.png" alt="1570457615784"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457582715.png" alt="1570457582715"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457615784.png" alt="1570457615784"></p>
 </li>
 <li><p>将一封邮件发送给多个接收者，并且接收者属于不同的域</p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457659516.png" alt="1570457659516"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457659516.png" alt="1570457659516"></p>
 <p>下图为程序输出截图</p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457668896.png" alt="1570457668896"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457685949.png" alt="1570457685949"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457697414.png" alt="1570457697414"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457711773.png" alt="1570457711773"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457668896.png" alt="1570457668896"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457685949.png" alt="1570457685949"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457697414.png" alt="1570457697414"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457711773.png" alt="1570457711773"></p>
 <p>下图为程序运行后保存下来的以时间戳命名的日志文档</p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457723898.png" alt="1570457723898"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457723898.png" alt="1570457723898"></p>
 <p>日志文档内容如下</p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457747310.png" alt="1570457747310"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457754007.png" alt="1570457754007"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457762168.png" alt="1570457762168"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457771324.png" alt="1570457771324"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457776111.png" alt="1570457776111"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457787256.png" alt="1570457787256"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457792426.png" alt="1570457792426"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570457798935.png" alt="1570457798935"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457747310.png" alt="1570457747310"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457754007.png" alt="1570457754007"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457762168.png" alt="1570457762168"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457771324.png" alt="1570457771324"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457776111.png" alt="1570457776111"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457787256.png" alt="1570457787256"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457792426.png" alt="1570457792426"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570457798935.png" alt="1570457798935"></p>
 <p>目的邮箱2、3的发送日志和目的邮箱1相似，这里就不一一赘述，会把日志放在实验报告里面</p>
 <p>用base64将邮件内容解码(解码网站：<a href="https://1024tools.com/base64)得到真实邮件内容" target="_blank" rel="noopener">https://1024tools.com/base64)得到真实邮件内容</a></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458208569.png" alt="1570458208569"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458220376.png" alt="1570458220376"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458208569.png" alt="1570458208569"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458220376.png" alt="1570458220376"></p>
 <p>下图为来自不同域的邮箱收到的邮件</p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458252177.png" alt="1570458252177"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458292381.png" alt="1570458292381"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458299259.png" alt="1570458299259"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458252177.png" alt="1570458252177"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458292381.png" alt="1570458292381"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458299259.png" alt="1570458299259"></p>
 </li>
 <li><p>邮件发送错误生成错误报告</p>
 <ol>
 <li><p>发件人邮箱错误</p>
 <p>由于foxmail不会出现发件邮箱错误，为此我们首先更改了一下代码，得到差错报告</p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458368163.png" alt="1570458368163"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458374129.png" alt="1570458374129"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458368163.png" alt="1570458368163"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458374129.png" alt="1570458374129"></p>
 <p>时间戳日志内容</p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458393735.png" alt="1570458393735"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458393735.png" alt="1570458393735"></p>
 </li>
 <li><p>收件人邮箱错误</p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458420577.png" alt="1570458420577"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458428161.png" alt="1570458428161"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458420577.png" alt="1570458420577"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458428161.png" alt="1570458428161"></p>
 <p>在时间戳日志中的内容为</p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458447126.png" alt="1570458447126"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458447126.png" alt="1570458447126"></p>
 </li>
 <li><p>接收<code>EHLO</code>错误</p>
 <p>由于foxmail一般不会出现接收”EHLO“错误，为此我们首先更改了一下代码，得到差错报告</p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458522622.png" alt="1570458522622"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458529130.png" alt="1570458529130"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458522622.png" alt="1570458522622"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458529130.png" alt="1570458529130"></p>
 <p>时间戳日志内容</p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458536158.png" alt="1570458536158"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458536158.png" alt="1570458536158"></p>
 </li>
 <li><p>接收<code>AUTH LOGIN</code>错误</p>
 <p>由于foxmail一般不会出现接收<code>AUTH LOGIN</code>错误，为此我们首先更改了一下代码，得到差错报告</p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458595554.png" alt="1570458595554"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458601831.png" alt="1570458601831"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458595554.png" alt="1570458595554"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458601831.png" alt="1570458601831"></p>
 <p>时间戳日志内容</p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458616613.png" alt="1570458616613"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458616613.png" alt="1570458616613"></p>
 </li>
 <li><p>接收<code>DATA</code>错误</p>
 <p>由于foxmail一般不会出现接收<code>DATA</code>错误，为此我们首先更改了一下代码，得到差错报告</p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458665510.png" alt="1570458665510"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458677278.png" alt="1570458677278"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458665510.png" alt="1570458665510"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458677278.png" alt="1570458677278"></p>
 <p>时间戳日志内容</p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458682084.png" alt="1570458682084"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458682084.png" alt="1570458682084"></p>
 </li>
 <li><p>接收 <code>.</code> 错误</p>
 <p>由于foxmail一般不会出现接收<code>.</code>错误，为此我们首先更改了一下代码，得到差错报告</p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458758374.png" alt="1570458758374"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458782507.png" alt="1570458782507"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458758374.png" alt="1570458758374"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458782507.png" alt="1570458782507"></p>
 <p>时间戳日志内容</p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458791157.png" alt="1570458791157"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458791157.png" alt="1570458791157"></p>
 </li>
 <li><p>根据观察，发现foxmail发送<code>QUIT</code>后会直接退出，没有验证<code>quit</code>的必要性，因此，没有<code>QUIT</code>错误报告</p>
 </li>
 </ol>
 </li>
 <li><p>本地服务器实现接收多个邮箱，即不固定用户名和密码，上述发送邮箱是QQ邮箱，接下来实现发送邮箱是163邮箱</p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458900597.png" alt="1570458900597"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458906161.png" alt="1570458906161"></p>
-<p><img src="/../images/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/1570458913048.png" alt="1570458913048"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458900597.png" alt="1570458900597"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458906161.png" alt="1570458906161"></p>
+<p><img src="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/1570458913048.png" alt="1570458913048"></p>
 </li>
 </ol>
 <h2 id="差错处理"><a href="#差错处理" class="headerlink" title="差错处理"></a>差错处理</h2><p>提供了差错处理功能，具体内容如下</p>
@@ -579,7 +585,7 @@
      <p><span>本文标题: </span><a href="/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8.html">C语言编写简单邮箱服务器</a></p>
      <p><span>文章作者: </span><a href="/" title="访问 李钰璕 的个人博客">李钰璕</a></p>
      <p><span>发布时间: </span>2019年10月07日 - 22:54</p>
-     <p><span>最后更新: </span>2019年10月07日 - 23:07</p>
+     <p><span>最后更新: </span>2020年01月02日 - 21:20</p>
      <p><span>原始链接: </span><a href="/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8.html" title="C语言编写简单邮箱服务器"><a href="https://www.leeyuxun.icu/C%E8%AF%AD%E8%A8%80%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8.html" title="C语言编写简单邮箱服务器">https://www.leeyuxun.icu/C语言编写简单邮箱服务器.html</a></a></p>
      <p><span>许可协议: </span>本博客所有文章除特别声明外，均采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)"> <i class="fa fa-creative-commons"></i>BY-NC-SA </a>许可协议，转载请注明出处！</p>
 </div>
