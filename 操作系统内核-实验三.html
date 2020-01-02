@@ -19,7 +19,7 @@
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    hostname: new URL('https://www.leeyuxun.club').hostname,
+    hostname: new URL('https://www.leeyuxun.icu').hostname,
     root: '/',
     scheme: 'Gemini',
     version: '7.6.0',
@@ -49,24 +49,24 @@
   <meta name="description" content="实验目的 理解内存页面调度的机理； 掌握几种理论调度算法实现； 通过实验比较各种调度算法的优劣； 通过实验了解HASH表数据结构的使用；">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统内核-实验三">
-<meta property="og:url" content="https://www.leeyuxun.club/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8-%E5%AE%9E%E9%AA%8C%E4%B8%89.html">
+<meta property="og:url" content="https://www.leeyuxun.icu/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8-%E5%AE%9E%E9%AA%8C%E4%B8%89.html">
 <meta property="og:site_name" content="Leeyuxun&#39;s blog">
 <meta property="og:description" content="实验目的 理解内存页面调度的机理； 掌握几种理论调度算法实现； 通过实验比较各种调度算法的优劣； 通过实验了解HASH表数据结构的使用；">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E5%AE%9E%E9%AA%8C%E4%B8%89/1571155503183.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E5%AE%9E%E9%AA%8C%E4%B8%89/1571062544372.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E5%AE%9E%E9%AA%8C%E4%B8%89/1571157657346.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E5%AE%9E%E9%AA%8C%E4%B8%89/1571070639492.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E5%AE%9E%E9%AA%8C%E4%B8%89/1571190143264.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E5%AE%9E%E9%AA%8C%E4%B8%89/1571280409171.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E5%AE%9E%E9%AA%8C%E4%B8%89/1571155503183.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E5%AE%9E%E9%AA%8C%E4%B8%89/1571062544372.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E5%AE%9E%E9%AA%8C%E4%B8%89/1571157657346.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E5%AE%9E%E9%AA%8C%E4%B8%89/1571070639492.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E5%AE%9E%E9%AA%8C%E4%B8%89/1571190143264.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E5%AE%9E%E9%AA%8C%E4%B8%89/1571280409171.png">
 <meta property="article:published_time" content="2019-10-17T04:54:21.000Z">
 <meta property="article:modified_time" content="2019-10-28T04:13:36.983Z">
 <meta property="article:author" content="李钰璕">
 <meta property="article:tag" content="存储器管理">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.leeyuxun.club/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E5%AE%9E%E9%AA%8C%E4%B8%89/1571155503183.png">
+<meta name="twitter:image" content="https://www.leeyuxun.icu/images/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E5%AE%9E%E9%AA%8C%E4%B8%89/1571155503183.png">
 
-<link rel="canonical" href="https://www.leeyuxun.club/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8-%E5%AE%9E%E9%AA%8C%E4%B8%89.html">
+<link rel="canonical" href="https://www.leeyuxun.icu/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8-%E5%AE%9E%E9%AA%8C%E4%B8%89.html">
 
 
 <script id="page-configurations">
@@ -214,7 +214,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.leeyuxun.club/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8-%E5%AE%9E%E9%AA%8C%E4%B8%89.html">
+    <link itemprop="mainEntityOfPage" href="https://www.leeyuxun.icu/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8-%E5%AE%9E%E9%AA%8C%E4%B8%89.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -486,7 +486,7 @@
      <p><span>文章作者: </span><a href="/" title="访问 李钰璕 的个人博客">李钰璕</a></p>
      <p><span>发布时间: </span>2019年10月17日 - 12:54</p>
      <p><span>最后更新: </span>2019年10月28日 - 12:13</p>
-     <p><span>原始链接: </span><a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8-%E5%AE%9E%E9%AA%8C%E4%B8%89.html" title="操作系统内核-实验三"><a href="https://www.leeyuxun.club/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8-%E5%AE%9E%E9%AA%8C%E4%B8%89.html" title="操作系统内核-实验三">https://www.leeyuxun.club/操作系统内核-实验三.html</a></a></p>
+     <p><span>原始链接: </span><a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8-%E5%AE%9E%E9%AA%8C%E4%B8%89.html" title="操作系统内核-实验三"><a href="https://www.leeyuxun.icu/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8-%E5%AE%9E%E9%AA%8C%E4%B8%89.html" title="操作系统内核-实验三">https://www.leeyuxun.icu/操作系统内核-实验三.html</a></a></p>
      <p><span>许可协议: </span>本博客所有文章除特别声明外，均采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)"> <i class="fa fa-creative-commons"></i>BY-NC-SA </a>许可协议，转载请注明出处！</p>
 </div>
 

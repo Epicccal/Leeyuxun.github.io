@@ -19,7 +19,7 @@
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    hostname: new URL('https://www.leeyuxun.club').hostname,
+    hostname: new URL('https://www.leeyuxun.icu').hostname,
     root: '/',
     scheme: 'Gemini',
     version: '7.6.0',
@@ -49,7 +49,7 @@
   <meta name="description" content="实验目标掌握如何利用ROP技术绕过安全保护机制。 实验内容要求 基于讲义实验一中的rop1.c，在关闭栈保护canary和ASLR内存地址随机化保护，开启NX保护的条件下，编写可用的ROP脚本对程序流进行劫持，从而执行system(&#x2F;bin&#x2F;sh)获得shell。要求详细分析ROP的原理，对漏洞利用详细过程进行详细的截图分析，并提供可在所提供虚拟机环境中可执行的脚本，以供实际验证； 基于讲义实验二">
 <meta property="og:type" content="article">
 <meta property="og:title" content="漏洞分析技术实验二">
-<meta property="og:url" content="https://www.leeyuxun.club/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF%E5%AE%9E%E9%AA%8C%E4%BA%8C.html">
+<meta property="og:url" content="https://www.leeyuxun.icu/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF%E5%AE%9E%E9%AA%8C%E4%BA%8C.html">
 <meta property="og:site_name" content="Leeyuxun&#39;s blog">
 <meta property="og:description" content="实验目标掌握如何利用ROP技术绕过安全保护机制。 实验内容要求 基于讲义实验一中的rop1.c，在关闭栈保护canary和ASLR内存地址随机化保护，开启NX保护的条件下，编写可用的ROP脚本对程序流进行劫持，从而执行system(&#x2F;bin&#x2F;sh)获得shell。要求详细分析ROP的原理，对漏洞利用详细过程进行详细的截图分析，并提供可在所提供虚拟机环境中可执行的脚本，以供实际验证； 基于讲义实验二">
 <meta property="og:locale" content="zh_CN">
@@ -76,7 +76,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://leeyuxun-1258157351.cos.ap-beijing.myqcloud.com/img/20191021151107.png">
 
-<link rel="canonical" href="https://www.leeyuxun.club/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF%E5%AE%9E%E9%AA%8C%E4%BA%8C.html">
+<link rel="canonical" href="https://www.leeyuxun.icu/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF%E5%AE%9E%E9%AA%8C%E4%BA%8C.html">
 
 
 <script id="page-configurations">
@@ -224,7 +224,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.leeyuxun.club/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF%E5%AE%9E%E9%AA%8C%E4%BA%8C.html">
+    <link itemprop="mainEntityOfPage" href="https://www.leeyuxun.icu/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF%E5%AE%9E%E9%AA%8C%E4%BA%8C.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -387,7 +387,7 @@
      <p><span>文章作者: </span><a href="/" title="访问 李钰璕 的个人博客">李钰璕</a></p>
      <p><span>发布时间: </span>2019年10月21日 - 20:35</p>
      <p><span>最后更新: </span>2019年10月21日 - 20:40</p>
-     <p><span>原始链接: </span><a href="/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF%E5%AE%9E%E9%AA%8C%E4%BA%8C.html" title="漏洞分析技术实验二"><a href="https://www.leeyuxun.club/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF%E5%AE%9E%E9%AA%8C%E4%BA%8C.html" title="漏洞分析技术实验二">https://www.leeyuxun.club/漏洞分析技术实验二.html</a></a></p>
+     <p><span>原始链接: </span><a href="/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF%E5%AE%9E%E9%AA%8C%E4%BA%8C.html" title="漏洞分析技术实验二"><a href="https://www.leeyuxun.icu/%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90%E6%8A%80%E6%9C%AF%E5%AE%9E%E9%AA%8C%E4%BA%8C.html" title="漏洞分析技术实验二">https://www.leeyuxun.icu/漏洞分析技术实验二.html</a></a></p>
      <p><span>许可协议: </span>本博客所有文章除特别声明外，均采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)"> <i class="fa fa-creative-commons"></i>BY-NC-SA </a>许可协议，转载请注明出处！</p>
 </div>
 

@@ -19,7 +19,7 @@
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    hostname: new URL('https://www.leeyuxun.club').hostname,
+    hostname: new URL('https://www.leeyuxun.icu').hostname,
     root: '/',
     scheme: 'Gemini',
     version: '7.6.0',
@@ -49,45 +49,45 @@
   <meta name="description" content="实验目的 读懂并能够独立编写密码验证的小程序。  运行 Ollydbg，并学习用其调试密码验证小程序。  通过修改汇编语句来修改程序的判断条件，改变程序的运行路线。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="缓冲区溢出 实验报告">
-<meta property="og:url" content="https://www.leeyuxun.club/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html">
+<meta property="og:url" content="https://www.leeyuxun.icu/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html">
 <meta property="og:site_name" content="Leeyuxun&#39;s blog">
 <meta property="og:description" content="实验目的 读懂并能够独立编写密码验证的小程序。  运行 Ollydbg，并学习用其调试密码验证小程序。  通过修改汇编语句来修改程序的判断条件，改变程序的运行路线。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565795262719.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565795381042.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565795418251.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565795448209.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565795482563.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565795488088.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565795609568.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565795720516.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797357774.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797362376.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797406931.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797422793.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797561858.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797574854.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797587429.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797649027.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797665901.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797680979.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797701037.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565798121426.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565798154333.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565798200923.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565798191459.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565798278535.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565798297876.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565798319089.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565798324932.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565795262719.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565795381042.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565795418251.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565795448209.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565795482563.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565795488088.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565795609568.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565795720516.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797357774.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797362376.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797406931.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797422793.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797561858.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797574854.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797587429.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797649027.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797665901.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797680979.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565797701037.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565798121426.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565798154333.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565798200923.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565798191459.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565798278535.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565798297876.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565798319089.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565798324932.png">
 <meta property="article:published_time" content="2019-08-14T15:00:58.000Z">
 <meta property="article:modified_time" content="2019-08-15T02:19:59.921Z">
 <meta property="article:author" content="李钰璕">
 <meta property="article:tag" content="缓冲区溢出">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.leeyuxun.club/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565795262719.png">
+<meta name="twitter:image" content="https://www.leeyuxun.icu/images/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565795262719.png">
 
-<link rel="canonical" href="https://www.leeyuxun.club/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html">
+<link rel="canonical" href="https://www.leeyuxun.icu/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html">
 
 
 <script id="page-configurations">
@@ -235,7 +235,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.leeyuxun.club/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html">
+    <link itemprop="mainEntityOfPage" href="https://www.leeyuxun.icu/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -469,7 +469,7 @@ verification!</code>，结束程序，否则输出<code>incorrect password!</cod
      <p><span>文章作者: </span><a href="/" title="访问 李钰璕 的个人博客">李钰璕</a></p>
      <p><span>发布时间: </span>2019年08月14日 - 23:00</p>
      <p><span>最后更新: </span>2019年08月15日 - 10:19</p>
-     <p><span>原始链接: </span><a href="/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html" title="缓冲区溢出 实验报告"><a href="https://www.leeyuxun.club/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html" title="缓冲区溢出 实验报告">https://www.leeyuxun.club/缓冲区溢出-实验报告.html</a></a></p>
+     <p><span>原始链接: </span><a href="/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html" title="缓冲区溢出 实验报告"><a href="https://www.leeyuxun.icu/%E7%BC%93%E5%86%B2%E5%8C%BA%E6%BA%A2%E5%87%BA-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html" title="缓冲区溢出 实验报告">https://www.leeyuxun.icu/缓冲区溢出-实验报告.html</a></a></p>
      <p><span>许可协议: </span>本博客所有文章除特别声明外，均采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)"> <i class="fa fa-creative-commons"></i>BY-NC-SA </a>许可协议，转载请注明出处！</p>
 </div>
 

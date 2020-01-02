@@ -19,7 +19,7 @@
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    hostname: new URL('https://www.leeyuxun.club').hostname,
+    hostname: new URL('https://www.leeyuxun.icu').hostname,
     root: '/',
     scheme: 'Gemini',
     version: '7.6.0',
@@ -49,42 +49,42 @@
   <meta name="description" content="实验目的 了解SEH攻击和虚函数攻击的基本原理； 调试虚函数攻击代码，理解虚函数工作机制与内存分布方式，掌握基本的虚函数攻击与计算方式，并可以用OllyDbg追踪； 通过调试SEH攻击代码，理解Windows异常处理机制，掌握针对SEH的攻击方式，并利用OllyDbg跟踪异常状态。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="虚函数攻击和SEH攻击 实验报告">
-<meta property="og:url" content="https://www.leeyuxun.club/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html">
+<meta property="og:url" content="https://www.leeyuxun.icu/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html">
 <meta property="og:site_name" content="Leeyuxun&#39;s blog">
 <meta property="og:description" content="实验目的 了解SEH攻击和虚函数攻击的基本原理； 调试虚函数攻击代码，理解虚函数工作机制与内存分布方式，掌握基本的虚函数攻击与计算方式，并可以用OllyDbg追踪； 通过调试SEH攻击代码，理解Windows异常处理机制，掌握针对SEH的攻击方式，并利用OllyDbg跟踪异常状态。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851188253.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851194716.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851200766.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851208465.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851215407.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851226446.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851232753.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851240943.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851300622.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565849959690.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565849990658.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851481979.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851522215.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851692024.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851722541.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851802367.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565852130345.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565852211877.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565852252563.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565852281949.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565852289720.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565852318989.png">
-<meta property="og:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565852843165.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851188253.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851194716.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851200766.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851208465.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851215407.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851226446.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851232753.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851240943.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851300622.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565849959690.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565849990658.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851481979.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851522215.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851692024.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851722541.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851802367.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565852130345.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565852211877.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565852252563.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565852281949.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565852289720.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565852318989.png">
+<meta property="og:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565852843165.png">
 <meta property="article:published_time" content="2019-08-15T06:03:29.000Z">
 <meta property="article:modified_time" content="2019-08-15T07:17:25.822Z">
 <meta property="article:author" content="李钰璕">
 <meta property="article:tag" content="虚函数攻击">
 <meta property="article:tag" content="SEH攻击">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.leeyuxun.club/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851188253.png">
+<meta name="twitter:image" content="https://www.leeyuxun.icu/images/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/1565851188253.png">
 
-<link rel="canonical" href="https://www.leeyuxun.club/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html">
+<link rel="canonical" href="https://www.leeyuxun.icu/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html">
 
 
 <script id="page-configurations">
@@ -232,7 +232,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://www.leeyuxun.club/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html">
+    <link itemprop="mainEntityOfPage" href="https://www.leeyuxun.icu/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -412,7 +412,7 @@
      <p><span>文章作者: </span><a href="/" title="访问 李钰璕 的个人博客">李钰璕</a></p>
      <p><span>发布时间: </span>2019年08月15日 - 14:03</p>
      <p><span>最后更新: </span>2019年08月15日 - 15:17</p>
-     <p><span>原始链接: </span><a href="/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html" title="虚函数攻击和SEH攻击 实验报告"><a href="https://www.leeyuxun.club/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html" title="虚函数攻击和SEH攻击 实验报告">https://www.leeyuxun.club/虚函数攻击和SEH攻击-实验报告.html</a></a></p>
+     <p><span>原始链接: </span><a href="/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html" title="虚函数攻击和SEH攻击 实验报告"><a href="https://www.leeyuxun.icu/%E8%99%9A%E5%87%BD%E6%95%B0%E6%94%BB%E5%87%BB%E5%92%8CSEH%E6%94%BB%E5%87%BB-%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.html" title="虚函数攻击和SEH攻击 实验报告">https://www.leeyuxun.icu/虚函数攻击和SEH攻击-实验报告.html</a></a></p>
      <p><span>许可协议: </span>本博客所有文章除特别声明外，均采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)"> <i class="fa fa-creative-commons"></i>BY-NC-SA </a>许可协议，转载请注明出处！</p>
 </div>
 
